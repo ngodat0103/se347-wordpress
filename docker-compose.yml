@@ -1,0 +1,35 @@
+name: wordpress
+services:
+
+  wordpress:
+    depends_on:
+      - wordpress-db
+    image: wordpress
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST:-wordpress}
+      WORDPRESS_DB_USER: ${WORDPRESS_DB_USER:-wordpress}
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD:-wordpress}
+      WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME:-wordpress}
+    volumes:
+      - wordpress:/var/www/html
+
+  wordpress-db:
+    image: mysql:8.0
+    restart: always
+    hostname: ${WORDPRESS_DB_HOST:-wordpress}
+    environment:
+      MYSQL_DATABASE: ${WORDPRESS_DB_NAME:-wordpress}
+      MYSQL_USER: ${WORDPRESS_DB_USER:-wordpress}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-wordpress}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root-password}
+    volumes:
+      - wordpress-db:/var/lib/mysql
+
+volumes:
+  wordpress:
+   external: true
+  wordpress-db:
+   external: true
