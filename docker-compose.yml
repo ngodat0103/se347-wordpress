@@ -4,8 +4,6 @@ services:
     depends_on:
       - wordpress-db
     image: wordpress
-    networks:
-      - app-network
     restart: always
     ports:
       - 8080:80
@@ -27,10 +25,6 @@ services:
     volumes:
       - dbdata:/var/lib/mysql
     command: '--default-authentication-plugin=mysql_native_password'
-    networks:
-      - app-network
-
-
 volumes:
   wordpress:
    external: true
