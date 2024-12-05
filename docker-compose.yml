@@ -61,7 +61,7 @@ services:
     volumes:
       - certbot-etc:/etc/letsencrypt
       - wordpress:/var/www/html
-    command: certonly --webroot --webroot-path=/var/www/html --email minhminh99599@gmail.com --agree-tos --no-eff-email --force-renewal -d codescore.ddns.net
+    command: certonly --webroot --webroot-path=/var/www/html --email example@gmail.com --agree-tos --no-eff-email --force-renewal -d se347-wordpress.ngodat0103.live
 
 volumes:
   certbot-etc:

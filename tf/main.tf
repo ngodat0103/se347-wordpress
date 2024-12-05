@@ -27,7 +27,7 @@ module "instances" {
     tar -xvf wordpress_backup.tar --strip 3 -C /var/lib/docker/volumes/wordpress/_data/
     cd /home/ubuntu
     git clone https://github.com/ngodat0103/se347-wordpress.git
-    chown ubuntu:ubuntu se347-wordpress
+    chown ubuntu:ubuntu -R se347-wordpress
     #Create a .env file manually
     #and using docker compose up -d to start the wordpress
     EOF
